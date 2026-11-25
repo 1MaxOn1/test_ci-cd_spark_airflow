@@ -1,0 +1,3 @@
+{"timestamp":"2026-11-24T09:02:03.483363Z","level":"info","event":"::group::Pre Execute","ti_id":"01a20cca-6cdb-7267-baaa-d94162283c3f","logger":"task","filename":"task_runner.py","lineno":2580}
+{"timestamp":"2026-11-24T09:02:19.561879Z","level":"info","event":"::endgroup::","ti_id":"01a20cca-6cdb-7267-baaa-d94162283c3f","logger":"task"}
+{"timestamp":"2026-11-24T09:02:19.563485Z","level":"error","event":"Could not reach the Execution API server. Verify the `[core] execution_api_server_url` (or `[api] base_url`) setting points at a reachable Airflow API server.","ti_id":"01a20cca-6cdb-7267-baaa-d94162283c3f","server":"http://airflow-apiserver:8080/execution/","error":"timed out","logger":"task"}

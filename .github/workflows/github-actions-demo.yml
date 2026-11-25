@@ -1,0 +1,7 @@
+name: test-local-device
+on: push
+jobs:
+    runs-on: test-runner-label
+    steps:
+        - name: Just print hello
+          run: echo 'Hello'
