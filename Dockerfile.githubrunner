@@ -31,10 +31,8 @@ RUN install -m 0755 -d /etc/apt/keyrings && \
                    docker-compose-plugin && \  
     rm -rf /var/lib/apt/lists/*
 
-RUN useradd -m runner && \  
-    usermod -aG sudo runner && \  
-    sudo groupadd docker && \
-    sudo usermod -aG docker runner && \
+RUN useradd -m runner && \   
+    usermod -aG root runner && \
     echo "%sudo   ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers
 
 ARG TARGETARCH  
