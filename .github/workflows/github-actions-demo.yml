@@ -16,3 +16,4 @@ jobs:
         steps:
             - name: Build docker images
               run: docker compose -f docker-compose.yaml up -d
+        needs: clone-repo
