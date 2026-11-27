@@ -13,4 +13,4 @@ COPY ./spark ./spark
 RUN pip3 install apache-airflow-providers-apache-spark==5.4.1 \
      && pip3 install pyspark==4.0.1
      
-COPY ./custom_dag/mall_customers_working.py /opt/dags
+COPY /custom_dag/mall_customers_working.py /opt/dags
