@@ -54,5 +54,5 @@ WORKDIR /home/runner/actions-runner
 
 CMD if [ -f ".runner" ]; then \
         exec ./run.sh; \
-    else ./config.sh --url "https://github.com/${REPOSITORY_OWNER}" --token "${REG_TOKEN}" && exec ./run.sh; \
+    else ./config.sh --url "https://github.com/${REPOSITORY_OWNER}" --token "${REG_TOKEN}" --name "test_runner_docker" --labels "self-hosted-amd64" && exec ./run.sh; \
     fi;
