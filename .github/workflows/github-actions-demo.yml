@@ -15,7 +15,7 @@ jobs:
                 if [ -n "$(ls -A "test_ci-cd_spark_airflow" 2>/dev/null)" ]; then
                     echo "Repo already downloaded"
                 else
-                    git clone https://github.com/1MaxOn1/test_ci-cd_spark_airflow.git /repos 
+                    git clone https://github.com/1MaxOn1/test_ci-cd_spark_airflow.git ./repos 
                 fi;
 
     deploy-services:
