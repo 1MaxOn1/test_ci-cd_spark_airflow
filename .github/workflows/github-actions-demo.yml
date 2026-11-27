@@ -12,10 +12,10 @@ jobs:
             - name: Clone repo
               run: |
                 echo "Inside mount folder repos and start cloning"
-                if [ -n "$(ls -A "./repos" 2>/dev/null)" ]; then
+                if [ -n "$(ls -A "/home/runner/actions-runner/repos" 2>/dev/null)" ]; then
                     echo "Repo already downloaded"
                 else
-                    git clone https://github.com/1MaxOn1/test_ci-cd_spark_airflow.git ./repos 
+                    git clone https://github.com/1MaxOn1/test_ci-cd_spark_airflow.git /home/runner/actions-runner/repos
                     echo 'Cloning finished'
                 fi;
 
