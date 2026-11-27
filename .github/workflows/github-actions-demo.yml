@@ -19,6 +19,6 @@ jobs:
         steps:
             - name: Build docker images
               run: |
-                cd lab1 && \
+                cd lab1
                 cd docker compose -f docker-compose.yaml up -d
         needs: clone-repo
