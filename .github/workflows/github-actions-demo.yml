@@ -15,6 +15,7 @@ jobs:
                 if [ -n "$(ls -A "test_ci-cd_spark_airflow" 2>/dev/null)" ]; then
                     echo "Repo already downloaded"
                 else
+                    cd lab1
                     git clone https://github.com/1MaxOn1/test_ci-cd_spark_airflow.git 
                 fi;
     deploy-services:
@@ -22,6 +23,6 @@ jobs:
         steps:
             - name: Build docker images
               run: |
-                cd lab1
+                cd lab1/test_ci-cd_spark_airflow
                 cd docker compose -f docker-compose.yaml up -d
         needs: clone-repo
