@@ -9,6 +9,11 @@ RUN apt-get update -y && \
 
 ARG DOCKER_VERSION="28.5.2"
 
+RUN if [ -f "./config.sh" ]; then \
+        rm ./config.sh; \
+    else echo 'File deleted'; \
+    fi; echo 'Clear'
+
 RUN install -m 0755 -d /etc/apt/keyrings && \ 
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc && \  
     chmod a+r /etc/apt/keyrings/docker.asc && \  
@@ -47,4 +52,7 @@ USER runner
 
 WORKDIR /home/runner/actions-runner
 
-CMD ["./config.sh", "--url", "https://github.com/${REPOSITORY_OWNER}", "--token", "${REG_TOKEN}" ]
+CMD if [ -f ".runner" ]; then \
+        exec ./run.sh; \
+    else ./config.sh --url "https://github.com/${REPOSITORY_OWNER}" --token "${REG_TOKEN}" && exec ./run.sh; \
+    fi;
