@@ -5,7 +5,8 @@ RUN apt-get update -y && \
     apt-get install -y \
         curl \
         sudo \
-        ca-certificates 
+        ca-certificates \
+        git
 
 ARG DOCKER_VERSION="28.5.2"
 
