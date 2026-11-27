@@ -6,3 +6,13 @@ jobs:
         steps:
             - name: Just print hello
               run: echo 'Hello'
+    clone-repo:
+        runs-on: self-hosted-amd64
+        steps:
+            - name: Clone repo
+            run: git clone https://github.com/1MaxOn1/test_ci-cd_spark_airflow.git
+    deploy-services:
+        runs-on: self-hosted-amd64
+        steps:
+            - name: Build docker images
+            run: docker compose -f docker-compose.yaml up -d
