@@ -11,6 +11,7 @@ jobs:
         steps:
             - name: Clone repo
               run: |
+                
                 cd repos
                 echo "Inside mount folder repos and start cloning"
                 if [ -n "$(ls -A "test_ci-cd_spark_airflow" 2>/dev/null)" ]; then
