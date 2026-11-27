@@ -2,7 +2,7 @@ name: test-local-device
 on: push
 jobs:
     test-build:
-        runs-on: test-runner-label
+        runs-on: self-hosted-amd64
         steps:
             - name: Just print hello
               run: echo 'Hello'
