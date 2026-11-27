@@ -33,6 +33,8 @@ RUN install -m 0755 -d /etc/apt/keyrings && \
 
 RUN useradd -m runner && \  
     usermod -aG sudo runner && \  
+    sudo groupadd docker && \
+    sudo usermod -aG docker runner && \
     echo "%sudo   ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers
 
 ARG TARGETARCH  
