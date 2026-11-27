@@ -24,6 +24,6 @@ jobs:
         steps:
             - name: Build docker images
               run: |
-                cd lab1/test_ci-cd_spark_airflow
+                cd repos
                 docker compose -f docker-compose.yaml up -d --build
         needs: clone-repo
