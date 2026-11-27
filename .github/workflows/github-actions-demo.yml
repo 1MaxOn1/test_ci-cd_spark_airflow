@@ -12,6 +12,7 @@ jobs:
             - name: Clone repo
               run: |
                 mkdir -p lab1 
+                echo "Lab1 folder checked"
                 if [ -n "$(ls -A "test_ci-cd_spark_airflow" 2>/dev/null)" ]; then
                     echo "Repo already downloaded"
                 else
