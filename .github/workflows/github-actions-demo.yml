@@ -13,6 +13,7 @@ jobs:
               run: |
                 mkdir -p lab1 
                 echo "Lab1 folder checked"
+                cd lab1
                 if [ -n "$(ls -A "test_ci-cd_spark_airflow" 2>/dev/null)" ]; then
                     echo "Repo already downloaded"
                 else
