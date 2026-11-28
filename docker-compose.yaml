@@ -232,4 +232,6 @@ services:
 
 volumes:
   shared:
+    external: true
+    name: runner_mounts_shared
   postgres_shared:
