@@ -18,6 +18,8 @@ jobs:
                     git clone https://github.com/1MaxOn1/test_ci-cd_spark_airflow.git /home/runner/actions-runner/repos
                     echo 'Cloning finished'
                 fi;
+                    cd /home/runner/actions-runner/repos
+                    git pull origin main
                 echo "Start copy folders files"
                 sudo cp -R /home/runner/actions-runner/repos/dags /home/runner/actions-runner/shared/
                 sudo cp -R /home/runner/actions-runner/repos/spark /home/runner/actions-runner/shared/
