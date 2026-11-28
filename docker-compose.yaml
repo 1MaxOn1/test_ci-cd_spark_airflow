@@ -212,3 +212,7 @@ services:
     volumes:
       - ./repos/dags/data_mall:/opt/airflow/dags/data_mall
     command: '/opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077'
+
+
+  volumes:
+    -repos:
