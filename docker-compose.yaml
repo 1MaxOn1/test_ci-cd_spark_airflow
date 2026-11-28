@@ -1,3 +1,4 @@
+
 x-airflow-common:
   &airflow-common
   build:
@@ -15,14 +16,20 @@ x-airflow-common:
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
     AIRFLOW_CONFIG: '/opt/airflow/config/airflow.cfg'
   volumes:
-    - shared:/airflow/dags/data_mall
-    - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
-    - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
-    - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
-    - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
-    - shared:/airflow/dags
-    - shared:/airflow/logs
-    - shared:/airflow/spark
+    - shared:/opt/airflow/share
+    - type: volume
+      source: shared
+      target: /opt/airflow/dags
+      volume:
+        subpath: dags
+    - type: volume
+      source: shared
+      target: /opt/airflow/spark
+      volume:
+        subpath: spark
+    - airflow_logs:/opt/airflow/logs
+    - airflow_config:/opt/airflow/config
+    - airflow_plugins:/opt/airflow/plugins
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -46,8 +53,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - postgres_shared:/home/runner/actions-runner/postgres_shared
-
+      - postgres_shared:/var/lib/postgresql/data
 
   airflow-apiserver:
     <<: *airflow-common
@@ -198,7 +204,11 @@ services:
       postgres:
         condition: service_healthy
     volumes:
-      - shared:/dags/data_mall
+      - type: volume
+        source: shared
+        target: /dags/data_mall
+        volume:
+          subpath: dags/data_mall
     command: '/opt/spark/bin/spark-class org.apache.spark.deploy.master.Master'
 
   spark-worker:
@@ -210,10 +220,22 @@ services:
       - "7000:7000"
       - "8081:8081"
     volumes:
-      - shared:/dags/data_mall
+      - type: volume
+        source: shared
+        target: /dags/data_mall
+        volume:
+          subpath: dags/data_mall
     command: '/opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077'
-
 
 volumes:
   shared:
+    external: true
+    name: ${SHARED_VOLUME_NAME:-lab1_shared}
+
   postgres_shared:
+    external: true
+    name: ${POSTGRES_VOLUME_NAME:-lab1_postgres_shared}
+
+  airflow_logs:
+  airflow_config:
+  airflow_plugins:

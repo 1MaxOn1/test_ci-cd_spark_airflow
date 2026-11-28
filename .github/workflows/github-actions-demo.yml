@@ -20,6 +20,7 @@ jobs:
                 fi;
                 echo "Start copy folders files"
                 sudo cp -R /home/runner/actions-runner/repos/dags /home/runner/actions-runner/shared/
+                sudo cp -R /home/runner/actions-runner/repos/spark /home/runner/actions-runner/shared/
 
     deploy-services:
         runs-on: self-hosted-amd64
