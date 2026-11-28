@@ -46,7 +46,7 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - postgres_shared:/var/lib/postgresql
+      - postgres_shared:/home/runner/actions-runner/postgres_shared
 
 
   airflow-apiserver:

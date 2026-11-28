@@ -19,8 +19,7 @@ jobs:
                     echo 'Cloning finished'
                 fi;
                 echo "Start copy folders files"
-                cp -R /home/runner/actions-runner/repos/airflow /home/runner/actions-runner/shared
-                cp -R /home/runner/actions-runner/repos/db_airflow /home/runner/actions-runner/postgres_shared
+                cp -R /home/runner/actions-runner/repos/dags /home/runner/actions-runner/shared
 
     deploy-services:
         runs-on: self-hosted-amd64
