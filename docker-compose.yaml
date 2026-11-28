@@ -18,7 +18,7 @@ x-airflow-common:
   volumes:
     - type: volume
       source: shared
-      target: /opt/ariflow/dags
+      target: /opt/airflow/dags
       volume:
         subpath: dags
     
