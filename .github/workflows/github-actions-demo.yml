@@ -29,5 +29,5 @@ jobs:
             - name: Build docker images
               run: |
                 # cd /home/runner/actions-runner/repos
-                docker compose -f /home/runner/actions-runner/repos/docker-compose.yaml up -d --build
+                docker compose -f /home/runner/actions-runner/repos/docker-compose.yaml up -d --force-recreate
         needs: clone-repo
