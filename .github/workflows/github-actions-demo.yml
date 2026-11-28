@@ -19,7 +19,7 @@ jobs:
                     echo 'Cloning finished'
                 fi;
                 echo "Start copy folders files"
-                cp -R /home/runner/actions-runner/repos/dags /home/runner/actions-runner/shared
+                sudo cp -R /home/runner/actions-runner/repos/dags /home/runner/actions-runner/shared/
 
     deploy-services:
         runs-on: self-hosted-amd64
